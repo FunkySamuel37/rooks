@@ -20,7 +20,7 @@ function useCountdown(
 ): number {
   const { interval = 1000, onDown, onEnd } = options;
   const [time, setTime] = useState<Date>(() => new Date());
-  const restTime = endTime.getTime() - time.getTime();
+  const restTime = endTime.getTime() - new Date().getTime();
   const count = restTime > 0 ? Math.ceil(restTime / interval) : 0;
 
   useInterval(onTick, count ? interval : null, true);
